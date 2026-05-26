@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSIT College Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fas fa-book-open"></i> KSIT Library</h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#books">Search & Books</a></li>
+                <li><a href="#history">History & Fame</a></li>
+                <li><a href="#rules">Rules & Fines</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="btn-login" onclick="toggleModal('loginModal')">Login</button>
+        </div>
+    </nav>
+
+    <!-- UPDATES TICKER -->
+    <div class="updates-ticker">
+        <div class="ticker-content">
+            <i class="fas fa-bell"></i> <span>Update: The library will remain open until 10 PM during exam weeks. | New Arrival: "Introduction to Quantum Computing" now available in Rack B2.</span>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Explore the World of Knowledge</h2>
+            <p>Access thousands of books, digital resources, and research papers.</p>
+            
+            <div class="search-container">
+                <input type="text" id="mainSearch" placeholder="Search books by title, author, or keyword...">
+                <button onclick="handleSearch()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <p id="searchResult" class="search-result-msg"></p>
+        </div>
+    </section>
+
+    <!-- BOOK CATEGORIES -->
+    <section id="categories" class="section">
+        <div class="section-header">
+            <h2>Department Categories</h2>
+            <p>Browse our extensive collection by department</p>
+        </div>
+        <div class="grid-container">
+            <div class="category-card" onclick="alert('Viewing CSE Collection')">
+                <i class="fas fa-laptop-code"></i>
+                <h3>CSE</h3>
+                <p>Computer Science</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing CCE Collection')">
+                <i class="fas fa-network-wired"></i>
+                <h3>CCE</h3>
+                <p>Computer & Communication</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing ICB Collection')">
+                <i class="fas fa-microchip"></i>
+                <h3>ICB</h3>
+                <p>IoT, Cyber & Block</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing AI & ML Collection')">
+                <i class="fas fa-brain"></i>
+                <h3>AI & ML</h3>
+                <p>Artificial Intelligence</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing Mechanical Collection')">
+                <i class="fas fa-cogs"></i>
+                <h3>Mechanical</h3>
+                <p>Mechanical Engg</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing Biotech Collection')">
+                <i class="fas fa-dna"></i>
+                <h3>Biotech</h3>
+                <p>Biotechnology</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing CSD Collection')">
+                <i class="fas fa-pencil-ruler"></i>
+                <h3>CSD</h3>
+                <p>Design</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing ECE Collection')">
+                <i class="fas fa-satellite-dish"></i>
+                <h3>ECE</h3>
+                <p>Electronics & Comm</p>
+            </div>
+            <div class="category-card" onclick="alert('Viewing ETC Collection')">
+                <i class="fas fa-broadcast-tower"></i>
+                <h3>ETC</h3>
+                <p>Telecommunication</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMART SHELF & BOOK RESOURCES -->
+    <section id="books" class="section alt-bg">
+        <div class="section-header">
+            <h2>Library Collection & Digital Resources</h2>
+            <p>Smart Shelf Locator - Find exact locations or download digital copies</p>
+        </div>
+        
+        <div class="book-grid" id="bookGrid">
+            <!-- Books will be rendered here dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <!-- BORROWING HISTORY & LEADERBOARD -->
+    <section id="history" class="section">
+        <div class="section-header">
+            <h2>Student Dashboard</h2>
+            <p>Your history and top readers</p>
+        </div>
+        
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'historyTab')">Borrowing History</button>
+            <button class="tab-btn" onclick="switchTab(event, 'fameTab')">Wall of Fame</button>
+        </div>
+
+        <div id="historyTab" class="tab-content active">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Issue Date</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Pragmatic Programmer</td>
+                            <td>May 01, 2026</td>
+                            <td>May 15, 2026</td>
+                            <td><span class="badge warning">Due Soon</span></td>
+                        </tr>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Apr 10, 2026</td>
+                            <td>Apr 24, 2026</td>
+                            <td><span class="badge success">Returned</span></td>
+                        </tr>
+                        <tr>
+                            <td>Design Patterns</td>
+                            <td>Mar 15, 2026</td>
+                            <td>Mar 29, 2026</td>
+                            <td><span class="badge danger">Overdue</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="fameTab" class="tab-content" style="display: none;">
+            <div class="leaderboard-grid">
+                <div class="fame-card gold">
+                    <div class="medal"><i class="fas fa-medal"></i></div>
+                    <h3>Alex Johnson</h3>
+                    <p>32 Books Read</p>
+                    <small>0 Late Returns</small>
+                </div>
+                <div class="fame-card silver">
+                    <div class="medal"><i class="fas fa-medal"></i></div>
+                    <h3>Samantha Lee</h3>
+                    <p>28 Books Read</p>
+                    <small>Top Contributor</small>
+                </div>
+                <div class="fame-card bronze">
+                    <div class="medal"><i class="fas fa-medal"></i></div>
+                    <h3>Michael Chen</h3>
+                    <p>24 Books Read</p>
+                    <small>100% On-Time</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES & PENALTIES -->
+    <section id="rules" class="section alt-bg">
+        <div class="section-header">
+            <h2>Rules & Penalties</h2>
+            <p>Library guidelines and fine calculation</p>
+        </div>
+
+        <div class="rules-container">
+            <div class="rules-box">
+                <h3><i class="fas fa-scroll"></i> Borrowing Terms</h3>
+                <ul>
+                    <li>Maximum borrowing period is <strong>14 days</strong>.</li>
+                    <li>Students can borrow up to 3 books at a time.</li>
+                    <li>Reference books cannot be issued outside the library.</li>
+                    <li>A fine is charged for every day past the due date.</li>
+                </ul>
+                <button class="btn btn-outline" style="margin-top:20px;" onclick="toggleModal('librarianModal')">
+                    <i class="fas fa-user-shield"></i> Librarian Dashboard UI
+                </button>
+            </div>
+
+            <div class="calculator-box">
+                <h3><i class="fas fa-calculator"></i> Fine Calculator</h3>
+                <p>Fine applies after 14 days (₹2 per day).</p>
+                <div class="form-group">
+                    <label>Days Kept:</label>
+                    <input type="number" id="daysKept" placeholder="e.g. 16" min="0">
+                </div>
+                <button class="btn btn-primary" onclick="calculateFine()">Calculate</button>
+                <div id="fineResult" class="fine-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3><i class="fas fa-book-open"></i> KSIT Library</h3>
+                <p>Empowering students through knowledge.</p>
+                <div class="contact-details">
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> library@ksit.edu</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#books">Digital Library</a>
+                <a href="#rules">Rules</a>
+            </div>
+            <div class="footer-map">
+                <h4>Location</h4>
+                <!-- Placeholder for map -->
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marker-alt"></i> Map Embed (Main Campus)
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KSIT College Library. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal('loginModal')">&times;</span>
+            <h2>Student Login</h2>
+            <p>Enter your credentials to access your account.</p>
+            <form onsubmit="event.preventDefault(); alert('Logged in successfully!'); toggleModal('loginModal');">
+                <div class="form-group">
+                    <label>USN / ID</label>
+                    <input type="text" required placeholder="e.g. 1NX20CS001">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Librarian Dashboard Modal -->
+    <div id="librarianModal" class="modal">
+        <div class="modal-content librarian-modal">
+            <span class="close" onclick="toggleModal('librarianModal')">&times;</span>
+            <h2><i class="fas fa-user-shield"></i> Librarian Dashboard</h2>
+            <p>Manage returns and clear fines (UI Only)</p>
+            
+            <div class="table-container" style="margin-top:20px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Student USN</th>
+                            <th>Book Title</th>
+                            <th>Fine Pending</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1NX20CS045</td>
+                            <td>Design Patterns</td>
+                            <td>₹20</td>
+                            <td>
+                                <button class="btn-action success" onclick="alert('Book returned & fine cleared!')"><i class="fas fa-check"></i> Return & Clear</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1NX21EC012</td>
+                            <td>Digital Logic</td>
+                            <td>₹0</td>
+                            <td>
+                                <button class="btn-action success" onclick="alert('Book returned!')"><i class="fas fa-check"></i> Return</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

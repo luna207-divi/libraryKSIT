@@ -1,0 +1,465 @@
+/* Intermediate Student Level CSS */
+/* Reset default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light grayish blue background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: #1a237e; /* Dark Blue */
+}
+
+/* Common Section padding */
+.section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    border-bottom: 2px solid #ffca28; /* Gold Accent */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.alt-bg {
+    background-color: #e8eaf6; /* Slightly darker background for alternate sections */
+}
+
+/* NAVBAR */
+#navbar {
+    background-color: #1a237e; /* Dark Blue */
+    color: white;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: #ffca28; /* Gold */
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #ffca28;
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #ffca28; /* Gold */
+    color: #1a237e;
+}
+
+.btn-primary:hover {
+    background-color: #ffb300; /* Darker Gold */
+}
+
+.btn-secondary {
+    background-color: #9e9e9e; /* Gray for PDF download */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #757575;
+}
+
+.btn-login {
+    background-color: transparent;
+    color: #ffca28;
+    border: 2px solid #ffca28;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background-color: #ffca28;
+    color: #1a237e;
+}
+
+/* TICKER */
+.updates-ticker {
+    background-color: #ffca28;
+    color: #1a237e;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* HERO SECTION */
+.hero {
+    background-color: #283593;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.search-container {
+    margin-top: 20px;
+}
+
+.search-container input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-result-msg {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* CATEGORIES */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.category-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Simple shadow */
+}
+
+.category-card:hover {
+    background-color: #e8eaf6;
+    border-color: #1a237e;
+}
+
+.category-card i {
+    font-size: 40px;
+    color: #1a237e;
+    margin-bottom: 10px;
+}
+
+/* BOOK GRID */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.book-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.book-cover {
+    height: 150px;
+    background-color: #3f51b5; /* Default solid blue */
+    position: relative;
+}
+
+/* Different colors for different books to simulate covers */
+.book-physics { background-color: #1976d2; }
+.book-ai { background-color: #7b1fa2; }
+.book-cyber { background-color: #388e3c; }
+.book-history { background-color: #e64a19; }
+
+.status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* Book info text */
+.book-info {
+    padding: 15px;
+}
+
+.book-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.book-info .author {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.locator {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-info button {
+    width: 100%;
+}
+
+/* TABS */
+.dashboard-tabs {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    background-color: #1a237e;
+    color: white;
+}
+
+/* TABLES */
+.table-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #1a237e;
+    color: white;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.badge.success { background-color: #4caf50; }
+.badge.warning { background-color: #ff9800; }
+.badge.danger { background-color: #f44336; }
+
+/* LEADERBOARD */
+.leaderboard-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fame-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.fame-card h3 {
+    margin: 10px 0;
+}
+
+/* RULES AND CALCULATOR */
+.rules-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.rules-box, .calculator-box {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.rules-box ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.fine-result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1a237e;
+    color: white;
+    padding: 30px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.footer-info, .footer-links, .footer-map {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #3f51b5;
+    padding-top: 10px;
+}
+
+/* MODALS */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Semi-transparent background */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.librarian-modal {
+    max-width: 700px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
