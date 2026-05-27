@@ -1,209 +1,145 @@
-// Basic JavaScript Interactivity
+// Basic Variables and Arrays
+var books = [
+    // CSE Books
+    { id: 1, title: "Data Structures in C", author: "Reema Thareja", dept: "CSE", total: 5, available: 5 },
+    { id: 2, title: "Operating Systems Principles", author: "Abraham Silberschatz", dept: "CSE", total: 5, available: 5 },
+    { id: 3, title: "Computer Networks", author: "Andrew S. Tanenbaum", dept: "CSE", total: 5, available: 5 },
 
-// Modal Toggles
-function toggleModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal.style.display === "block") {
-        modal.style.display = "none";
-    } else {
-        modal.style.display = "block";
-    }
-}
+    // CCE Books
+    { id: 4, title: "Data Communications", author: "William Stallings", dept: "CCE", total: 5, available: 5 },
+    { id: 5, title: "Wireless Networks", author: "Theodore Rappaport", dept: "CCE", total: 5, available: 5 },
+    { id: 6, title: "Advanced Communication Systems", author: "Wayne Tomasi", dept: "CCE", total: 5, available: 5 },
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-        event.target.style.display = "none";
-    }
-}
+    // ICB Books
+    { id: 7, title: "Introduction to IoT", author: "Raj Kamal", dept: "ICB", total: 5, available: 5 },
+    { id: 8, title: "Cyber Security Principles", author: "Charles J. Brooks", dept: "ICB", total: 5, available: 5 },
+    { id: 9, title: "Blockchain Basics", author: "Daniel Drescher", dept: "ICB", total: 5, available: 5 },
 
-// Search Mock
-function handleSearch() {
-    const query = document.getElementById('mainSearch').value;
-    const resultMsg = document.getElementById('searchResult');
-    
-    if (query.trim() === '') {
-        resultMsg.style.color = 'var(--accent-warning)';
-        resultMsg.textContent = 'Please enter a book title or author.';
-        return;
-    }
-    
-    resultMsg.style.color = 'var(--accent-success)';
-    resultMsg.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Searching for "${query}"...`;
-    
-    setTimeout(() => {
-        resultMsg.textContent = `Found results for "${query}". Scroll down to view.`;
-        document.getElementById('books').scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
-}
+    // AI & ML Books
+    { id: 10, title: "Introduction to AI", author: "Stuart Russell", dept: "AI & ML", total: 5, available: 5 },
+    { id: 11, title: "Machine Learning", author: "Tom M. Mitchell", dept: "AI & ML", total: 5, available: 5 },
+    { id: 12, title: "The World of Bots", author: "Alan Turing", dept: "AI & ML", total: 5, available: 5 },
 
-// Tab Switching
-function switchTab(event, tabId) {
-    // Hide all tab contents
-    const tabContents = document.getElementsByClassName('tab-content');
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].style.display = "none";
-        tabContents[i].classList.remove('active');
-    }
-    
-    // Remove active class from all buttons
-    const tabBtns = document.getElementsByClassName('tab-btn');
-    for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove('active');
-    }
-    
-    // Show current tab and set active class
-    document.getElementById(tabId).style.display = "block";
-    setTimeout(() => {
-        document.getElementById(tabId).classList.add('active');
-    }, 10);
-    event.currentTarget.classList.add('active');
-}
+    // Mechanical Books
+    { id: 13, title: "Engineering Mechanics", author: "S.S. Bhavikatti", dept: "Mechanical", total: 5, available: 5 },
+    { id: 14, title: "Thermodynamics", author: "Yunus Cengel", dept: "Mechanical", total: 5, available: 5 },
+    { id: 15, title: "Fluid Mechanics", author: "R.K. Bansal", dept: "Mechanical", total: 5, available: 5 },
 
-// Fine Calculator
-function calculateFine() {
-    const daysKept = parseInt(document.getElementById('daysKept').value);
-    const resultDiv = document.getElementById('fineResult');
-    
-    if (isNaN(daysKept) || daysKept < 0) {
-        resultDiv.style.color = 'var(--accent-warning)';
-        resultDiv.textContent = 'Please enter a valid number of days.';
-        return;
-    }
-    
-    const maxDays = 14;
-    const finePerDay = 2; // ₹2
-    
-    if (daysKept <= maxDays) {
-        resultDiv.style.color = 'var(--accent-success)';
-        resultDiv.textContent = 'No fine. Book returned on time.';
-    } else {
-        const extraDays = daysKept - maxDays;
-        const totalFine = extraDays * finePerDay;
-        resultDiv.style.color = 'var(--accent-danger)';
-        resultDiv.textContent = `Fine Pending: ₹${totalFine} (${extraDays} days late)`;
-    }
-}
+    // Biotech Books
+    { id: 16, title: "Principles of Biochemistry", author: "Albert Lehninger", dept: "Biotech", total: 5, available: 5 },
+    { id: 17, title: "Genetics", author: "B.D. Singh", dept: "Biotech", total: 5, available: 5 },
+    { id: 18, title: "Bioinformatics Basics", author: "Ignacimuthu", dept: "Biotech", total: 5, available: 5 },
 
-// --- Dynamic Book Management System ---
+    // CSD Books
+    { id: 19, title: "Design Thinking", author: "Tim Brown", dept: "CSD", total: 5, available: 5 },
+    { id: 20, title: "UI/UX Principles", author: "Don Norman", dept: "CSD", total: 5, available: 5 },
+    { id: 21, title: "Graphic Design History", author: "Philip Meggs", dept: "CSD", total: 5, available: 5 },
 
-const initialBooks = [
-    {
-        id: 'bk-1',
-        title: 'Data Structures using C',
-        author: 'Reema Thareja',
-        rack: 'CSE-04',
-        shelf: '2',
-        coverClass: 'book-physics',
-        totalCopies: 5,
-        availableCopies: 5
-    },
-    {
-        id: 'bk-2',
-        title: 'Artificial Intelligence',
-        author: 'Stuart Russell',
-        rack: 'AIML-01',
-        shelf: '1',
-        coverClass: 'book-ai',
-        totalCopies: 5,
-        availableCopies: 1
-    },
-    {
-        id: 'bk-3',
-        title: 'Cryptography and Network Security',
-        author: 'William Stallings',
-        rack: 'ICB-02',
-        shelf: '3',
-        coverClass: 'book-cyber',
-        totalCopies: 5,
-        availableCopies: 0
-    },
-    {
-        id: 'bk-4',
-        title: 'Thermodynamics',
-        author: 'Yunus A. Cengel',
-        rack: 'MECH-09',
-        shelf: '5',
-        coverClass: 'book-history',
-        totalCopies: 5,
-        availableCopies: 3
-    }
+    // ECE Books
+    { id: 22, title: "Basic Electronics", author: "D.P. Kothari", dept: "ECE", total: 5, available: 5 },
+    { id: 23, title: "Microprocessors", author: "Ramesh Gaonkar", dept: "ECE", total: 5, available: 5 },
+    { id: 24, title: "Digital Logic Design", author: "Morris Mano", dept: "ECE", total: 5, available: 5 },
+
+    // ETC Books
+    { id: 25, title: "Telecommunication Systems", author: "T. Viswanathan", dept: "ETC", total: 5, available: 5 },
+    { id: 26, title: "Antenna and Wave Propagation", author: "K.D. Prasad", dept: "ETC", total: 5, available: 5 },
+    { id: 27, title: "Satellite Communications", author: "Timothy Pratt", dept: "ETC", total: 5, available: 5 }
 ];
 
-let ksitBooks = [];
-
-function initBooks() {
-    const stored = localStorage.getItem('ksit_books_data');
-    if (stored) {
-        ksitBooks = JSON.parse(stored);
-    } else {
-        ksitBooks = JSON.parse(JSON.stringify(initialBooks));
-        localStorage.setItem('ksit_books_data', JSON.stringify(ksitBooks));
+// Check if we have saved data in the browser (localStorage)
+var savedData = localStorage.getItem("ksit_books");
+if (savedData != null) {
+    // Load the saved data if it exists
+    var loadedBooks = JSON.parse(savedData);
+    
+    // Simple check: if we added new books to the code but localstorage only has 4, we should ignore localstorage 
+    // so our new 27 books actually show up!
+    if(loadedBooks.length === books.length) {
+        books = loadedBooks;
     }
-    renderBooks();
 }
 
-function renderBooks() {
-    const grid = document.getElementById('bookGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    
-    ksitBooks.forEach(book => {
-        let statusHtml = '';
-        let buttonHtml = '';
-        
-        if (book.availableCopies > 1) {
-            statusHtml = `<span class="status available" style="background-color: #4caf50;">Available: ${book.availableCopies} / ${book.totalCopies} copies</span>`;
-            buttonHtml = `<button class="btn btn-primary" onclick="borrowBook('${book.id}', this)">Borrow Book</button>`;
-        } else if (book.availableCopies === 1) {
-            statusHtml = `<span class="status warning" style="background-color: #ff9800; color: #fff;">Last copy left! (1/${book.totalCopies})</span>`;
-            buttonHtml = `<button class="btn btn-primary" style="background-color: #ff9800; color: #fff;" onclick="borrowBook('${book.id}', this)">Borrow Book</button>`;
-        } else {
-            statusHtml = `<span class="status unavailable" style="background-color: #f44336;">All copies issued (0/${book.totalCopies})</span>`;
-            buttonHtml = `<button class="btn btn-secondary" onclick="downloadPdf('${book.title}')"><i class="fas fa-download"></i> Download PDF</button>`;
+// Function to show all books on the webpage
+function displayBooks() {
+    var bookGrid = document.getElementById("bookGrid");
+    bookGrid.innerHTML = ""; // Clear existing books
+
+    // Loop through each book using a basic for loop
+    for (var i = 0; i < books.length; i++) {
+        var currentBook = books[i];
+
+        // Create HTML for each book
+        var bookHTML = "<div class='book-card'>";
+        bookHTML += "<h3>" + currentBook.title + "</h3>";
+        bookHTML += "<p><b>Author:</b> " + currentBook.author + "</p>";
+        bookHTML += "<p><b>Department:</b> " + currentBook.dept + "</p>";
+
+        // Check copies to change color and text
+        if (currentBook.available > 1) {
+            bookHTML += "<p style='color: green;'><b>Available Copies: " + currentBook.available + "/" + currentBook.total + "</b></p>";
+            bookHTML += "<button onclick='borrowBook(" + i + ")'>Borrow Book</button>";
+        } 
+        else if (currentBook.available == 1) {
+            bookHTML += "<p style='color: orange;'><b>Last Copy Left! (1/5)</b></p>";
+            bookHTML += "<button onclick='borrowBook(" + i + ")'>Borrow Book</button>";
+        } 
+        else {
+            bookHTML += "<p style='color: red;'><b>No Copies Available (0/5)</b></p>";
+            // Pass the index 'i' to the download function so it knows which book to reset
+            bookHTML += "<button style='background-color: gray;' onclick='downloadPDF(" + i + ")'>Download PDF</button>";
         }
 
-        const card = document.createElement('div');
-        card.className = 'book-card';
-        card.innerHTML = `
-            <div class="book-cover ${book.coverClass}">
-                ${statusHtml}
-            </div>
-            <div class="book-info">
-                <h3>${book.title}</h3>
-                <p class="author">${book.author}</p>
-                <div class="locator">
-                    <span><i class="fas fa-th"></i> Rack: <strong>${book.rack}</strong></span>
-                    <span><i class="fas fa-layer-group"></i> Shelf: <strong>${book.shelf}</strong></span>
-                </div>
-                ${buttonHtml}
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
+        bookHTML += "</div>";
 
-function borrowBook(id, btnElement) {
-    const bookIndex = ksitBooks.findIndex(b => b.id === id);
-    if (bookIndex > -1 && ksitBooks[bookIndex].availableCopies > 0) {
-        
-        // Button click feedback
-        const originalText = btnElement.innerText;
-        btnElement.innerText = "Processing...";
-        btnElement.style.transform = "scale(0.95)";
-        
-        setTimeout(() => {
-            ksitBooks[bookIndex].availableCopies -= 1;
-            localStorage.setItem('ksit_books_data', JSON.stringify(ksitBooks));
-            renderBooks(); // Re-render to update UI
-        }, 300);
+        // Add the book HTML to the grid
+        bookGrid.innerHTML += bookHTML;
     }
 }
 
-function downloadPdf(title) {
-    alert(`Initiating PDF download for "${title}"...`);
+// Function to borrow a book
+function borrowBook(index) {
+    if (books[index].available > 0) {
+        books[index].available = books[index].available - 1; // Reduce by 1
+        
+        // Save to browser
+        localStorage.setItem("ksit_books", JSON.stringify(books));
+        
+        // Refresh the books on the screen
+        displayBooks();
+    }
 }
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', initBooks);
+// Function to download PDF and reset the book count
+function downloadPDF(index) {
+    alert("PDF download starting... The book stock will now be restocked!");
+    
+    // Reset the available copies back to the total (5)
+    books[index].available = books[index].total;
+    
+    // Save the new restocked count to the browser
+    localStorage.setItem("ksit_books", JSON.stringify(books));
+    
+    // Refresh the books on the screen
+    displayBooks();
+}
+
+// Function to calculate fine
+function calculateFine() {
+    var days = document.getElementById("daysKept").value;
+    var fine = 0;
+    
+    if (days > 14) {
+        var extraDays = days - 14;
+        fine = extraDays * 2; // Rs 2 per day
+        document.getElementById("fineResult").innerText = "Fine to pay: Rs " + fine;
+        document.getElementById("fineResult").style.color = "red";
+    } else {
+        document.getElementById("fineResult").innerText = "No fine. Book returned on time.";
+        document.getElementById("fineResult").style.color = "green";
+    }
+}
+
+// Run this function when the page loads
+window.onload = function() {
+    displayBooks();
+};
